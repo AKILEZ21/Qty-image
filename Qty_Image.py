@@ -94,8 +94,14 @@ class Ventana(QWidget):
                 self.label_imagen.setText("Error, Formato no válido \n (Formatos Validos: .jpg, .jpeg)")
 
     def guardar_imagen(self):
-        if not hasattr(self, "imagen_original"): return
+        if not hasattr(self, "imagen_original"):
+            return
+        else:
+                    if hasattr(self, "imagen_original"):
+                        del self.imagen_original
+                    self.label_imagen.setText("Error, Formato no Valido \n (Formatos Validos: .jpg, .jpeg)")
         ruta_guardado, _= QFileDialog.getSaveFileName(self, "Guardar Imagen", "", "JPEG Files (*.jpg *.jpeg)")
+        
         if not ruta_guardado: return
         try:
             self.imagen_original.save(ruta_guardado, format="JPEG", quality=self.slider_calidad.value())

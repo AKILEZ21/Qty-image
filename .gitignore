@@ -1,1 +1,5 @@
 .venv/
+build/
+dist/
+*.spec
+icono_build.ico
